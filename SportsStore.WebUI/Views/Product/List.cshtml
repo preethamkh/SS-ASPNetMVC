@@ -1,15 +1,25 @@
 ﻿@using SportsStore.Domain.Entities
-@model IEnumerable<Product>
+@model SportsStore.WebUI.Models.ProductsListViewModel
 
 @{
     ViewBag.Title = "List of Products";
 }
 
-@foreach (var p in Model)
+@foreach (var p in Model.Products)
 {
-    <div>
-        <h4>@p.Name</h4>
-        @p.Description
-        <h4>@p.Price.ToString("C")</h4>
-    </div>
+    @*<div class="well">
+        <h4>
+            <strong>@p.Name</strong>
+            <span class="pull-right label label-primary">@p.Price.ToString("C")</span>
+        </h4>
+        <span class="lead">@p.Description</span>
+    </div>*@
+    
+    // replace with partial view
+    @Html.Partial("ProductSummary", p)
 }
+
+@* displaying the page links - using the html helper method, passed upsing the new ProductsList ViewModel *@
+<div>
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new {page = x, category = Model.CurrentCategory}))
+</div>

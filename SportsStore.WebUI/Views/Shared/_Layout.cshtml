@@ -8,10 +8,22 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <link href="~/Content/ErrorStyles.css" rel="stylesheet" />
+    <style>
+        .navbar-right {
+            float: right !important;
+            margin-right: 15px;
+            margin-left: 15px;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse" role="navigation">
-        <a class="navbar-brand" href="#">Sports Store</a>
+        @*<a class="navbar-brand" href="#">Sports Store</a>*@
+        <a class="navbar-brand" href="#">
+            <span class="hidden-xs">Sports Store</span>
+            <div class="visible-xs">Sports</div>
+            <div class="visible-xs">Store</div>
+        </a>
         @Html.Action("Summary", "Cart")
     </div>
     <div class="row panel">
